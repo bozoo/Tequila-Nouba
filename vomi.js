@@ -48,7 +48,7 @@ function registerGamer() {
   joueurs[1] = prompt("Quel est ton nom soiffard ?");
   joueurs[2] = prompt("Quel est ton nom ivrogne ?");
   $('infos').innerHTML = "<p> Bonjour" + " " + joueurs[1] + " et " + joueurs[2] + " !" + " <br />Pour commencer la Téquila Nouba, servez des Teq'Paf à boire.</p>";
-  joueursOrdinateur = false;
+  joueursOrdinateur = false
 }
 //Contre l'ordinateur 
 function vsCPU() {
@@ -58,15 +58,11 @@ function vsCPU() {
   joueursOrdinateur = joueurs[2];
   console.log(joueursOrdinateur)
   $('infos').innerHTML = "<p> Bonjour" + " " + joueurs[1] + " et " + joueurs[2] + " !" + " <br />Pour commencer la Téquila Nouba, servez des Teq'Paf à boire.</p>";
-
 }
 //Function aléatoire
 
 function aleatoire(){
   return Math.floor(2*Math.random())+1;
-}
-function resultOrdinateur() {
-  return (Math.random()*3)+1
 }
 //Initialisation du jeu
 function startGame()
@@ -83,15 +79,14 @@ function startGame()
 
   // On affiche aléatoirement qui commence 
   startGamer = aleatoire();
-  joueursEnCours = joueurs[startGamer];
-    if (joueurs[startGamer] == joueursOrdinateur) {
-      joueursEnCours = joueurs[1];
+   if (joueurs[startGamer] == joueursOrdinateur) {
+      joueurs[startGamer] = joueurs[1];
     } 
-  $('infos').innerHTML = "<p>" + joueursEnCours + "se lance dans l'aventure</p>"
+  $('infos').innerHTML = "<p>" + joueurs[startGamer] + "se lance dans l'aventure</p>"
  
   // On laisse commencer l'humain plutôt que l'ordinateur
-    
-
+  joueursEnCours = joueurs[startGamer];
+   
  
   if (joueursEnCours)
     $('infos').innerHTML = "<p>Fais attention à ton foie" + " "+ joueurs[startGamer] + "</p>";
@@ -108,20 +103,14 @@ function enleverDesAllumettes(infos)
   // Nombre d'allumettes en jeu
   var allumettesEnJeu = $('allumettesEnJeu').innerHTML;
 
-
   // Nombres d'allumettes à enlever
   var allumettesEnMoins = $('allumettesEnMoins').value;
-  if(joueursEnCours == joueursOrdinateur) {
-  allumettesEnMoins = resultOrdinateur().value;
-  }
-
+   
   if (allumettesEnMoins>3 || allumettesEnMoins<1) {
     $('infos').innerHTML = "<p>Fais pas ton rigolo, tu dois boire au minimum 1 Teq'Paf au plus 3 Teq'Paf</p>";
     allumettesEnMoins=0;
   }
 
-
-  
 
 
   // On change le joueur en cours 
